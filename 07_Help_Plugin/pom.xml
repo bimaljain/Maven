@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.bjava.maven</groupId>
+	<artifactId>07_Help_Plugin</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>07_Help_Plugin</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+	 <profile>
+    <id>pr1</id>
+    <properties>
+    	<prop1>in jdk 1.6</prop1>
+    </properties>
+    	<activation>
+    	<jdk>1.6</jdk>
+    	</activation>
+    </profile>
+        <profile>
+    <id>pr2</id>
+    <properties>
+    	<prop2>in jdk 1.4</prop2>
+    </properties>
+    	<activation>
+    	<jdk>1.4</jdk>
+    	</activation>
+    </profile>
+        <profile>
+    <id>pr3</id>
+    <properties>
+    	<prop3>in windows</prop3>
+    </properties>
+    	<activation>
+    	<os>
+    		<family>windows</family>
+    	</os>
+    	</activation>
+    </profile>
+        <profile>
+    <id>pr4</id>
+    <properties>
+    	<prop4>active by default</prop4>
+    </properties>
+    	<activation>
+    	<activeByDefault>true</activeByDefault>
+    	</activation>
+    </profile>
+            <profile>
+    <id>pr5</id>
+    <properties>
+    	<prop5>activate by name</prop5>
+    </properties>
+    	<activation>
+    	<property>
+    		<name>env</name>
+    	</property>
+    	</activation>
+    </profile>
+                <profile>
+    <id>pr6</id>
+    <properties>
+    	<prop6>activate by name-value</prop6>
+    </properties>
+    	<activation>
+    	<property>
+    		<name>env</name>
+    		<value>dev</value>
+    	</property>
+    	</activation>
+    </profile>
+</profiles>
+
+</project>

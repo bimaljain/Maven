@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.bjava.maven</groupId>
+	<artifactId>11_Process_Files</artifactId>
+	<version>1.0-SNAPSHOT</version>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<db.name>dev.oracle.com</db.name>
+			</properties>
+			<activation>
+				<property>
+					<name>dev</name>
+				</property>
+			</activation>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<db.name>prod.oracle.com</db.name>
+			</properties>
+			<activation>
+				<property>
+					<name>prod</name>
+				</property>
+			</activation>
+		</profile>
+	</profiles>
+
+	<build>
+		<filters>
+			<filter>src/main/resources/filter.txt</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>*.txt</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+</project>
